@@ -1,0 +1,228 @@
+* {
+	text-shadow: none !important;
+}
+
+:root {
+	--main-bg-color: #1f2251;
+	--bg-color: #171941;
+	--background-color: #19040b;
+	--header-color: #e14eca;
+	--color-bg: linear-gradient(0deg, #389466, #42b883);
+}
+
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	background-color: #f5f5f5;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+	width: 5px;
+	background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.44, rgb(122, 153, 217)),
+		color-stop(0.72, rgb(73, 125, 189)),
+		color-stop(0.86, rgb(28, 58, 148))
+	);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar:hover {
+	/* background: #b30000;  */
+	width: 8px;
+}
+
+.transparent {
+	background-color: transparent !important;
+	box-shadow: none;
+}
+
+.bg-none {
+	background-color: transparent !important;
+}
+
+.hidden {
+	display: none !important;
+}
+.opacity-5 {
+	opacity: 0.5 !important;
+}
+
+.text-gray {
+	color: #aaa !important;
+}
+
+.text-rose {
+	color: #dc2265 !important;
+}
+
+.text-purple {
+	color: #6f42c1 !important;
+}
+
+.bg-blur {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bg-purple {
+	background-color: #6f42c1 !important;
+}
+
+.bg-rose {
+	background-color: rgb(232, 62, 140) !important;
+}
+
+.bg-rosy {
+	background: linear-gradient(60deg, #ec407a, #d81b60) !important;
+}
+
+.bg-brown {
+	background-color: saddlebrown !important;
+}
+
+.full-height {
+	height: 100vh;
+}
+
+.full-width {
+	width: 100%;
+}
+
+.text-black {
+	color: black;
+}
+
+.sticky-bottom {
+	position: sticky;
+	bottom: 0;
+	z-index: 1020;
+}
+
+.password-visibility {
+	position: absolute;
+	right: 0;
+	padding: 0 5px 5px 0;
+	z-index: 10;
+	cursor: pointer;
+	bottom: 0;
+	text-transform: lowercase;
+}
+
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+@media (min-width: 768px) {
+	.bd-placeholder-img-lg {
+		font-size: 3.5rem;
+	}
+}
+.scroll-to-top {
+	position: fixed;
+	right: 1rem;
+	bottom: 1rem;
+	display: none;
+	width: 2.75rem;
+	height: 2.75rem;
+	text-align: center;
+	color: #fff;
+	background: rgba(90, 92, 105, 0.5);
+	line-height: 46px;
+}
+.scroll-to-top:focus,
+.scroll-to-top:hover {
+	color: #fff;
+}
+.scroll-to-top:hover {
+	background: #5a5c69;
+}
+.scroll-to-top i {
+	font-weight: 800;
+}
+
+.card-shadow {
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+		0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.material-card {
+	color: #fff;
+	border-bottom: none;
+	padding: 15px;
+	border-radius: 3px;
+	margin: 0 15px;
+	margin-top: -20px;
+	box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
+		0 7px 10px -5px rgba(240, 234, 236, 0.4);
+}
+.btn,
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn:active:focus,
+.btn:focus {
+	outline: 0;
+	text-decoration: none;
+}
+
+.btn {
+	transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1),
+		background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+	will-change: box-shadow, transform;
+	white-space: nowrap;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.btn-link,
+.btn-link:active,
+.btn-link:focus,
+.btn-link:hover {
+	background-color: transparent;
+	text-decoration: none;
+	box-shadow: none;
+	cursor: pointer;
+}
+
+.input-group-append > .btn-primary {
+    color: #fff;
+    background-color: #8b4513;
+    border-color: #8b4513;
+}
+
+hr {
+	border: 0;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dropdown > button {
+	color: #343a40 !important;
+	border: 1px solid #dee2e6 !important;
+	background-color: #fff !important;
+	text-transform: capitalize !important;
+	/* height: 3.125rem;
+	padding: 0.75rem; */
+}
+
+form .invalid {
+	border-bottom: 2px solid #dc3545 !important;
+	padding-right: calc(1.5em + 0.75rem);
+	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+	background-repeat: no-repeat;
+	background-position: right calc(0.375em + 0.1875rem) center;
+	background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}

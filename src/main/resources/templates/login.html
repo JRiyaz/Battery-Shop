@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="utf-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta
+            content="width=device-width, initial-scale=1, maximum-scale=1, userEntity-scalable=no"
+            name="viewport"
+    />
+
+    <title>Login | Battery Shop</title>
+
+    <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet"
+    />
+
+    <!-- Bootstrap Styles -->
+    <link
+            href="../../static/assets/bootstrap/css/bootstrap.min.css"
+            rel="stylesheet"
+            th:href="@{/assets/bootstrap/css/bootstrap.min.css}"
+    />
+
+    <!-- FontAwesome Styles -->
+    <link
+            href="../../static/assets/fontawesome/css/all.min.css"
+            rel="stylesheet"
+            th:href="@{/assets/fontawesome/css/all.min.css}"
+    />
+
+    <!-- Bootstrap Cover Styles -->
+    <link
+            href="../../static/assets/bootstrap/css/cover.css"
+            rel="stylesheet"
+            th:href="@{/assets/bootstrap/css/cover.css}"
+    />
+
+    <!-- Material Styles -->
+    <link
+            href="../../static/assets/material-design/material-dashboard.min.css"
+            rel="stylesheet"
+            th:href="@{/assets/material-design/material-dashboard.min.css}"
+    />
+
+    <!-- Main Styles -->
+    <link
+            href="../../static/css/main.css"
+            rel="stylesheet"
+            th:href="@{/css/main.css}"
+    />
+
+    <style>
+			.bg-image {
+				/* url{[[@{/img/Background.jpg}]]} */
+				/* th:style="'background:url('+ @{/img/login.jpg} +');'" */
+
+				/* background-image: url('img/login.jpg'); */
+				background-image: url{[[@{/img/login.jpg}]]};
+				background-size: cover;
+				background-position: center center;
+				background-attachment: fixed;
+				height: 100vh;
+				overflow-x: hidden;
+				overflow-y: auto;
+			}
+			.card-header-rose {
+				background: linear-gradient(60deg, #5340ec, #d87b1b) !important;
+			}
+			.card-footer > .btn-link,
+			.forgot-password-link,
+			.card-footer > .btn-link:hover,
+			.forgot-password-link:hover,
+			.fa {
+				color: #3b45e4 !important;
+			}
+			.form-control:invalid,
+			.form-control:active,
+			.form-control:focus {
+				background-image: linear-gradient(
+						0deg,
+						#3b45e4 2px,
+						rgba(244, 67, 54, 0) 0
+					),
+					linear-gradient(0deg, #d2d2d2 1px, hsla(0, 0%, 82%, 0) 0);
+			}
+
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="full-width bg-image" th:style="'background-image:url('+ @{/img/login.jpg} +');'">
+    <div class="bg-blur full-width text-white text-center">
+        <div class="container d-flex p-3 mx-auto flex-column full-height">
+            <header class="masthead mb-auto">
+                <div class="inner">
+                    <h3 class="masthead-brand m-0">Battery Shop</h3>
+                    <nav class="nav nav-masthead justify-content-center">
+                        <a class="nav-link" href="#" th:href="@{/}">Home</a>
+                        <a class="nav-link" href="#" th:href="@{/user/register}"
+                        >Register</a
+                        >
+                        <a class="nav-link active" href="#" th:href="@{/user/login}"
+                        >Login</a
+                        >
+                    </nav>
+                </div>
+            </header>
+
+            <section
+                    class="inner cover my-5 col-lg-5 col-sm-12 mx-auto"
+                    role="main"
+            >
+                <div class="col-6 mx-auto">
+                    <div class="alert alert-danger alert-dismissable" th:if="${param.error}">
+                        <p class="m-0 text-center">
+                            <i class="icon fa fa-ban"></i>
+                            <span th:text="#{error.login_failed}">Invalid Email or Password.</span>
+                        </p>
+                    </div>
+
+                    <div class="alert alert-info alert-dismissable" th:if="${param.logout}">
+                        <p class="m-0 text-center">
+                            <i class="icon fa fa-info"></i>
+                            <span th:text="#{info.logout_success}">You have been logged out.</span>
+                        </p>
+                    </div>
+
+                    <div class="alert alert-success alert-dismissable" th:if="${param.register}">
+                        <p class="m-0 text-center">
+                            <i class="icon fa fa-info"></i>
+                            <span>You have registered successfully.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <form action="/user/sign-in" class="form-signin" method="POST">
+                    <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden">
+                    <div class="card card-login card-hidden">
+                        <div class="card-header card-header-rose text-center">
+                            <h4 class="card-title font-weight-bold py-2">Login</h4>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="bmd-form-group">
+                                <div class="input-group my-4">
+                                    <div class="input-group-prepend">
+												<span class="input-group-text">
+													<i aria-hidden="true" class="fa fa-user"></i>
+												</span>
+                                    </div>
+                                    <input
+                                            autocomplete="on"
+                                            autofocus="autofocus"
+                                            class="form-control"
+                                            name="email-mobile" placeholder="Enter Mobile or Email ID" required
+                                            type="text"
+                                    />
+                                </div>
+                            </div>
+                            <div class="bmd-form-group">
+                                <div class="input-group password-group my-4">
+                                    <div class="input-group-prepend">
+												<span class="input-group-text">
+													<i aria-hidden="true" class="fa fa-lock"></i>
+												</span>
+                                    </div>
+                                    <input
+                                            autofocus="autofocus"
+                                            class="form-control password-field"
+                                            id="password-field"
+                                            name="password"
+                                            placeholder="Password..." required type="password"
+                                    />
+                                    <span class="password-visibility d-none">show</span>
+                                </div>
+                            </div>
+                            <div class="bmd-form-group">
+                                <div class="input-group justify-content-center mt-3">
+                                    <div class="text-capitalize">
+                                        <input
+                                                class="form-check-input"
+                                                id="exampleCheck1"
+                                                type="checkbox"
+                                        />
+                                        <label class="form-check-label" for="exampleCheck1"
+                                        >remember me</label
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="float-right my-1 text-capitalize">
+                                <a
+                                        class="forgot-password-link"
+                                        href="#"
+                                        th:href="@{/user/forgot-password}"
+                                >
+                                    forgot password
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-footer justify-content-center p-0">
+                            <button
+                                    class="btn btn-rose btn-link btn-lg m-0"
+                                    type="submit"
+                            >
+                                Let's Go
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <footer class="mt-auto py-3 sticky-bottom">
+                <div class="inner float-left">
+                    <p>Login Page</p>
+                </div>
+                <div class="copyright float-right">
+                    <a
+                            class="text-white"
+                            href="#"
+                            target="_blank"
+                            th:href="@{/user/riyaz-j}"
+                    >Riyaz J</a
+                    >
+                    &nbsp; - &nbsp; ©
+                    <script>
+								document.write(new Date().getFullYear());
+
+
+
+
+
+                    </script>
+                    - All Rights Reserved.
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery Script -->
+<script
+        src="../../static/assets/jQuery/jquery.min.js"
+        th:src="@{'/assets/jQuery/jquery.min.js'}"
+></script>
+
+<script type="text/javascript">
+			$(document).ready(function () {
+				const password_field = $('#password-field');
+				const password_visibility = $('.password-visibility');
+				password_field.keypress(function () {
+					if ($('#password-field').val().length >= 0)
+						password_visibility.removeClass('d-none');
+				});
+
+				password_visibility.on('click', function () {
+					if (password_field.attr('type') === 'password') {
+						password_field.attr('type', 'text');
+						password_visibility.text('hide');
+					} else {
+						password_field.attr('type', 'password');
+						password_visibility.text('show');
+					}
+				});
+			});
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Custom Error</title>
+    <link href="../static/css/error-page.css" rel="stylesheet" th:href="@{/css/error-page.css}">
+</head>
+
+<body>
+<h1><b th:text="${statusCode}">000</b> Error Occurred</h1>
+<p class="zoom-area"><b>Oops! </b>Something went wrong...!</p>
+<p class="zoom-area">Exception <span th:text="${exception}">exception</span></p>
+<section class="error-container">
+    <span class="four"><span class="screen-reader-text" th:text="${status_code[0]}">0</span></span>
+    <span class="zero"><span class="screen-reader-text" th:text="${status_code[1]}">0</span></span>
+    <span class="four"><span class="screen-reader-text" th:text="${status_code[2]}">0</span></span>
+</section>
+<div class="row">
+    <div class="link-container">
+        <a class="more-link"
+           href="/">Home page</a>
+    </div>
+    <div class="link-container">
+        <a class="more-link"
+           style="background-color: #a07ca1;"
+           th:href="@{${back_url}}">Previous page</a>
+    </div>
+</div>
+</body>
+
+</html>

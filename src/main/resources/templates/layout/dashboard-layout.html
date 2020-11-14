@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="utf-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta
+            content="width=device-width, initial-scale=1, maximum-scale=1, userEntity-scalable=no"
+            name="viewport"
+    />
+
+    <title layout:title-pattern="$LAYOUT_TITLE | $CONTENT_TITLE">
+        Battery Shop
+    </title>
+
+    <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet"
+    />
+
+    <!-- Bootstrap Styles -->
+    <link
+            href="../../static/assets/bootstrap/css/bootstrap.min.css"
+            rel="stylesheet"
+            th:href="@{/assets/bootstrap/css/bootstrap.min.css}"
+    />
+
+    <!-- FontAwesome Styles -->
+    <link
+            href="../../static/assets/fontawesome/css/all.min.css"
+            rel="stylesheet"
+            th:href="@{/assets/fontawesome/css/all.min.css}"
+    />
+
+    <!-- Animation Styles -->
+    <link
+            href="../../static/assets/animate/animate.css"
+            rel="stylesheet"
+            th:href="@{/assets/animate/animate.css}"
+    />
+
+    <!-- Custom Styles -->
+    <link
+            href="../../static/css/battery-shop.min.css"
+            rel="stylesheet"
+            th:href="@{/css/battery-shop.min.css}"
+    />
+
+    <!-- Main Styles -->
+    <link
+            href="../../static/css/main.css"
+            rel="stylesheet"
+            th:href="@{/css/main.css}"
+    />
+</head>
+
+<body id="page-top">
+<!-- Page Wrapper -->
+<div id="wrapper">
+    <!-- Sidebar -->
+    <aside class="bg-dark animate__animated animate__fadeInLeft">
+        <ul
+                class="navbar-nav sidebar sidebar-dark accordion sticky-top"
+                id="accordionSidebar"
+        >
+            <!-- Sidebar - Brand -->
+            <a
+                    class="sidebar-brand d-flex align-items-center justify-content-center"
+                    href="#"
+                    th:href="@{/}"
+            >
+                <div class="sidebar-brand-icon d-inline-block">
+                    <i aria-hidden="true" class="fa fa-battery-full fa-2x"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3 d-inline-block">
+                    Battery Shop
+                </div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0"/>
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="#" th:href="@{/dashboard}">
+                    <i aria-hidden="true" class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider"/>
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Interface
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a
+                        aria-controls="collapseTwo"
+                        aria-expanded="true"
+                        class="nav-link collapsed"
+                        data-target="#collapseTwo"
+                        data-toggle="collapse"
+                        href="#"
+                >
+                    <i aria-hidden="true" class="fas fa-fw fa-cog"></i>
+                    <span>User</span>
+                </a>
+                <div
+                        aria-labelledby="headingTwo"
+                        class="collapse"
+                        data-parent="#accordionSidebar"
+                        id="collapseTwo"
+                >
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Custom Components:</h6>
+                        <th:block sec:authorize="isAnonymous()">
+                            <a class="collapse-item" href="#" th:href="@{/user/login}"
+                            >Login</a
+                            >
+                            <a class="collapse-item" href="#" th:href="@{/user/register}"
+                            >Register</a
+                            >
+                        </th:block>
+                        <th:block sec:authorize="isAuthenticated()">
+                            <a
+                                    class="collapse-item"
+                                    href="#"
+                                    th:href="@{/user/forgot-password}"
+                            >Forgot-Password</a
+                            >
+                        </th:block>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a
+                        aria-controls="collapseUtilities"
+                        aria-expanded="true"
+                        class="nav-link collapsed"
+                        data-target="#collapseUtilities"
+                        data-toggle="collapse"
+                        href="#"
+                >
+                    <i aria-hidden="true" class="fas fa-fw fa-wrench"></i>
+                    <span>Error Pages</span>
+                </a>
+                <div
+                        aria-labelledby="headingUtilities"
+                        class="collapse"
+                        data-parent="#accordionSidebar"
+                        id="collapseUtilities"
+                >
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Exceptions:</h6>
+                        <a class="collapse-item" href="#" th:href="@{/error/404}"
+                        >404</a
+                        >
+                        <a class="collapse-item" href="#">500</a>
+                        <a class="collapse-item" href="#">400</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider"/>
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Addons
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a
+                        aria-controls="collapsePages"
+                        aria-expanded="true"
+                        class="nav-link collapsed"
+                        data-target="#collapsePages"
+                        data-toggle="collapse"
+                        href="#"
+                >
+                    <i aria-hidden="true" class="fas fa-fw fa-folder"></i>
+                    <span>Pages</span>
+                </a>
+                <div
+                        aria-labelledby="headingPages"
+                        class="collapse"
+                        data-parent="#accordionSidebar"
+                        id="collapsePages"
+                >
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">View:</h6>
+                        <a class="collapse-item" href="#" th:href="@{/dealear}"
+                        >View Dealear</a
+                        >
+                        <a class="collapse-item" href="#" th:href="@{/stock}"
+                        >View Stock</a
+                        >
+                        <a class="collapse-item" href="#" th:href="@{/product}"
+                        >View Product</a
+                        >
+                        <a class="collapse-item" href="#" th:href="@{/referral}"
+                        >View Referral</a
+                        >
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Add:</h6>
+                        <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                            <a class="collapse-item" href="#" th:href="@{/dealear/add}"
+                            >Add Dealear</a
+                            >
+                            <a class="collapse-item" href="#" th:href="@{/stock/add}"
+                            >Add Stock ID</a
+                            >
+                            <a class="collapse-item" href="#" th:href="@{/product/add}"
+                            >Add Product</a
+                            >
+                            <a class="collapse-item" href="#" th:href="@{/referral/add}"
+                            >Add Referral</a
+                            >
+                        </th:block>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/user/profile}">
+                    <i aria-hidden="true" class="fas fa-fw fa-chart-area"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i aria-hidden="true" class="fas fa-fw fa-table"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block"/>
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+        </ul>
+    </aside>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div class="d-flex flex-column" id="content-wrapper">
+        <!-- Main Content -->
+        <div id="content">
+            <!-- Topbar -->
+
+            <header>
+                <nav
+                        class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+                >
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button
+                            class="btn btn-link d-md-none rounded-circle mr-3"
+                            id="sidebarToggleTop"
+                    >
+                        <i aria-hidden="true" class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+                    <form
+                            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+                    >
+                        <div
+                                class="input-group animate__animated animate__fadeInDown animate__delay-2s"
+                        >
+                            <input
+                                    aria-describedby="basic-addon2"
+                                    aria-label="Search"
+                                    class="form-control bg-light border-0 small"
+                                    placeholder="Search for..."
+                                    type="text"
+                            />
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i aria-hidden="true" class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a
+                                    aria-expanded="false"
+                                    aria-haspopup="true"
+                                    class="nav-link dropdown-toggle"
+                                    data-toggle="dropdown"
+                                    href="#"
+                                    id="searchDropdown"
+                                    role="button"
+                            >
+                                <i aria-hidden="true" class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div
+                                    aria-labelledby="searchDropdown"
+                                    class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                            >
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input
+                                                aria-describedby="basic-addon2"
+                                                aria-label="Search"
+                                                class="form-control bg-light border-0 small"
+                                                placeholder="Search for..."
+                                                type="text"
+                                        />
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i
+                                                        aria-hidden="true"
+                                                        class="fas fa-search fa-sm"
+                                                ></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Alerts -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a
+                                    aria-expanded="false"
+                                    aria-haspopup="true"
+                                    class="nav-link dropdown-toggle"
+                                    data-toggle="dropdown"
+                                    href="#"
+                                    id="alertsDropdown"
+                                    role="button"
+                            >
+                                <i aria-hidden="true" class="fas fa-bell fa-fw"></i>
+                                <!-- Counter - Alerts -->
+                                <span class="badge badge-danger badge-counter">3+</span>
+                            </a>
+
+                            <!-- Dropdown - Alerts -->
+                            <div
+                                    aria-labelledby="alertsDropdown"
+                                    class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            >
+                                <h6 class="dropdown-header">
+                                    Alerts Center
+                                </h6>
+                                <!-- Alert 1 -->
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-primary">
+                                            <i
+                                                    aria-hidden="true"
+                                                    class="fas fa-file-alt text-white"
+                                            ></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 12, 2019</div>
+                                        <span class="font-weight-bold"
+                                        >A new monthly report is ready to download!
+												</span>
+                                    </div>
+                                </a>
+
+                                <!-- Alert 2 -->
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-success">
+                                            <i
+                                                    aria-hidden="true"
+                                                    class="fas fa-donate text-white"
+                                            ></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 7, 2019</div>
+                                        $290.29 has been deposited into your account!
+                                    </div>
+                                </a>
+
+                                <!-- Alert 3 -->
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-warning">
+                                            <i
+                                                    aria-hidden="true"
+                                                    class="fas fa-exclamation-triangle text-white"
+                                            ></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 2, 2019</div>
+                                        Spending Alert: We've noticed unusually high spending
+                                        for your account.
+                                    </div>
+                                </a>
+
+                                <!-- All Alerts Button -->
+                                <a
+                                        class="dropdown-item text-center small text-gray-500"
+                                        href="#"
+                                >Show All Alerts
+                                </a>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Messages -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a
+                                    aria-expanded="false"
+                                    aria-haspopup="true"
+                                    class="nav-link dropdown-toggle"
+                                    data-toggle="dropdown"
+                                    href="#"
+                                    id="messagesDropdown"
+                                    role="button"
+                            >
+                                <i aria-hidden="true" class="fas fa-envelope fa-fw"></i>
+                                <!-- Counter - Messages -->
+                                <span class="badge badge-danger badge-counter">7</span>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div
+                                    aria-labelledby="messagesDropdown"
+                                    class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            >
+                                <h6 class="dropdown-header">
+                                    Message Center
+                                </h6>
+
+                                <!-- Message 1 -->
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img
+                                                alt=""
+                                                class="rounded-circle"
+                                                src="../../static/img/nav-profile.jpg"
+                                                th:src="@{/img/nav-profile.jpg}"
+                                        />
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div class="font-weight-bold">
+                                        <div class="text-truncate">
+                                            Hi there! I am wondering if you can help me with a
+                                            problem I've been having.
+                                        </div>
+                                        <div class="small text-gray-500">
+                                            Emily Fowler · 58m
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <!-- Message 2 -->
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img
+                                                alt=""
+                                                class="rounded-circle"
+                                                src="../../static/img/nav-profile.jpg"
+                                                th:src="@{/img/nav-profile.jpg}"
+                                        />
+                                        <div class="status-indicator"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">
+                                            I have the photos that you ordered last month, how
+                                            would you like them sent to you?
+                                        </div>
+                                        <div class="small text-gray-500">Jae Chun · 1d</div>
+                                    </div>
+                                </a>
+
+                                <!-- Message 3 -->
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img
+                                                alt=""
+                                                class="rounded-circle"
+                                                src="../../static/img/nav-profile.jpg"
+                                                th:src="@{/img/nav-profile.jpg}"
+                                        />
+                                        <div class="status-indicator bg-warning"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">
+                                            Last month's report looks great, I am very happy with
+                                            the progress so far, keep up the good work!
+                                        </div>
+                                        <div class="small text-gray-500">
+                                            Morgan Alvarez · 2d
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <!-- Message 4 -->
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img
+                                                alt=""
+                                                class="rounded-circle"
+                                                src="../../static/img/nav-profile.jpg"
+                                                th:src="@{/img/nav-profile.jpg}"
+                                        />
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">
+                                            Am I a good boy? The reason I ask is because someone
+                                            told me that people say this to all dogs, even if they
+                                            aren't good...
+                                        </div>
+                                        <div class="small text-gray-500">
+                                            Chicken the Dog · 2w
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <!-- Read All Messages Button -->
+                                <a
+                                        class="dropdown-item text-center small text-gray-500"
+                                        href="#"
+                                >Read More Messages
+                                </a>
+                            </div>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <th:block sec:authorize="isAuthenticated()">
+                            <li class="nav-item dropdown no-arrow">
+                                <a
+                                        aria-expanded="false"
+                                        aria-haspopup="true"
+                                        class="nav-link dropdown-toggle"
+                                        data-toggle="dropdown"
+                                        href="#"
+                                        id="userDropdown"
+                                        role="button"
+                                >
+											<span class="mr-2 d-none d-lg-inline text-gray-600 small"
+                                            >Valerie Luna
+											</span>
+                                    <img
+                                            alt=""
+                                            class="img-profile rounded-circle"
+                                            src="../../static/img/nav-profile.jpg"
+                                            th:src="@{/img/nav-profile.jpg}"
+                                    />
+                                </a>
+
+                                <!-- Dropdown - User Information -->
+                                <div
+                                        aria-labelledby="userDropdown"
+                                        class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                >
+                                    <!-- Option 1 -->
+                                    <span>
+												<a class="dropdown-item" href="#">
+													<i
+                                                            aria-hidden="true"
+                                                            class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"
+                                                    ></i>
+													Profile
+												</a>
+											</span>
+
+                                    <!-- Option 2 -->
+                                    <span>
+												<a class="dropdown-item" href="#">
+													<i
+                                                            aria-hidden="true"
+                                                            class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"
+                                                    ></i>
+													Settings
+												</a>
+											</span>
+
+                                    <!-- Option 3 -->
+                                    <span>
+												<a class="dropdown-item" href="#">
+													<i
+                                                            aria-hidden="true"
+                                                            class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"
+                                                    ></i>
+													Activity Log
+												</a>
+											</span>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <!-- Option 4 | Logout Button -->
+                                    <span class="align-content-center d-flex dropdown-item">
+												<i
+                                                        class="fa fa-sign-out-alt fa-fw fa-sm mr-2 my-auto text-gray-400"
+                                                ></i>
+												<form
+                                                        action="/user/logout"
+                                                        class="form-inline"
+                                                        method="POST"
+                                                >
+													<input
+                                                            th:name="${_csrf.parameterName}"
+                                                            th:value="${_csrf.token}"
+                                                            type="hidden"
+                                                    />
+													<button
+                                                            class="d-inline bg-none border-0"
+                                                            type="submit"
+                                                    >
+														Logout
+													</button>
+												</form>
+											</span>
+                                </div>
+                            </li>
+                        </th:block>
+
+                        <th:block sec:authorize="isAnonymous()">
+                            <li class="nav-item row my-auto">
+                                <a
+                                        class="btn btn-outline-primary mx-1"
+                                        href="#"
+                                        role="button"
+                                        th:href="@{/user/login}"
+                                >Login</a
+                                >
+                                <a
+                                        class="btn btn-outline-success mx-1"
+                                        href="#"
+                                        role="button"
+                                        th:href="@{/user/register}"
+                                >Register</a
+                                >
+                            </li>
+                        </th:block>
+                    </ul>
+                </nav>
+            </header>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <section layout:fragment="content">
+                <div class="text-center m-auto">
+                    Content Goes Here!
+                </div>
+            </section>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer>
+            <div class="sticky-footer py-0">
+                <div
+                        class="copyright text-center my-auto bg-brown text-white row justify-content-between mx-0 py-2"
+                >
+                    <div
+                            class="align-items-center d-flex justify-content-center mx-lg-5 mx-sm-auto p-3 rounded row shadow-sm text-center text-white"
+                    >
+                        <img
+                                alt="Battery Shop Logo"
+                                class="mr-3"
+                                height="48"
+                                src="../../static/img/bootstrap-outline.svg"
+                                th:src="@{/img/bootstrap-outline.svg}"
+                                width="48"
+                        />
+                        <div class="lh-100">
+                            <h6 class="mb-0 text-white lh-100">Battery Shop</h6>
+                            <small>Since 2011</small>
+                        </div>
+                    </div>
+
+                    <div
+                            class="col-sm-12 col-lg-auto my-auto mx-sm-4 mx-lg-5 text-capitalize text-center"
+                    >
+                        <a
+                                class="text-white"
+                                href="my-profile.html"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                        >Riyaz J
+                        </a>
+                        &nbsp; - &nbsp; ©
+                        <script>
+									document.write(new Date().getFullYear());
+
+
+
+                        </script>
+                        - all rights reserved.
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- End of Footer -->
+    </div>
+    <!-- End of Content Wrapper -->
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i aria-hidden="true" class="fas fa-angle-up"></i>
+</a>
+
+<!-- Optional Section -->
+<th:block layout:fragment="script"/>
+
+<!-- jQuery Script -->
+<script
+        src="../../static/assets/jQuery/jquery.min.js"
+        th:src="@{'/assets/jQuery/jquery.min.js'}"
+></script>
+
+<!-- Popper Script -->
+<script
+        src="../../static/assets/popper/popper.min.js"
+        th:src="@{'/assets/popper/popper.min.js'}"
+></script>
+
+<!-- Bootstrap Script -->
+<script
+        src="../../static/assets/bootstrap/js/bootstrap.min.js"
+        th:src="@{'/assets/bootstrap/js/bootstrap.min.js'}"
+></script>
+
+<!-- Custom Script -->
+<script
+        src="../../static/js/battery-shop.min.js"
+        th:src="@{'/js/battery-shop.min.js'}"
+></script>
+
+<script type="text/javascript">
+			$(document).ready(function () {
+				$('.toast').toast('show');
+
+				const href = $(location).attr('href');
+
+				const url = href.includes('?') ? href.split('?')[0] : href;
+
+				console.log('href: ' + href);
+				console.log('url: ' + url);
+
+				if (
+					url.endsWith('8080') ||
+					url.endsWith('8080/') ||
+					url.endsWith('home')
+				)
+					$('#home').addClass('active');
+				else if (url.endsWith('/student/add'))
+					$('#add-student').addClass('active');
+				else if (url.endsWith('/student/all'))
+					$('#all-students').addClass('active');
+				else if (url.endsWith('/user/all')) $('#all-users').addClass('active');
+				else if (url.endsWith('/file')) $('#upload-file').addClass('active');
+				else if (url.endsWith('/file/all')) $('#show-files').addClass('active');
+			});
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="utf-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta
+            content="width=device-width, initial-scale=1, maximum-scale=1, userEntity-scalable=no"
+            name="viewport"
+    />
+
+    <title layout:title-pattern="$LAYOUT_TITLE | $CONTENT_TITLE">
+        Battery Shop
+    </title>
+
+    <link
+            href="../static/assets/bootstrap/bootstrap.min.css"
+            rel="stylesheet"
+            th:href="@{/assets/bootstrap/bootstrap.min.css}"
+    />
+</head>
+
+<body>
+<div class="container-fluid">
+    <!--
+<th:block th:with="${someVarible=false}">
+<th:block th:each="dem : ${demo}">
+<th:block th:if="${dem.status==0}">
+     <label for="someVariableCheck">Edit someVariable</label>
+     <input id="someVariableCheck" type="checkbox" th:value="${someVariable}"/>
+</th:block>
+</th:block>
+<th:block th:if="${someVariable}">Its true</th:block>
+-->
+    <nav
+            class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top"
+    >
+        <a class="navbar-brand" href="/">Spring Demo</a>
+        <button
+                aria-controls="navbarText"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-target="#navbarText"
+                data-toggle="collapse"
+                type="button"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" id="home">
+                    <a class="nav-link" th:href="@{/home}">Home</a>
+                </li>
+                <li class="nav-item" id="add-student">
+                    <a class="nav-link" th:href="@{/student/add}"> Add Student </a>
+                </li>
+                <li class="nav-item" id="all-students">
+                    <a class="nav-link" th:href="@{/student/all}">All Students</a>
+                </li>
+                <li
+                        class="nav-item"
+                        id="all-users"
+                        sec:authorize="hasRole('ROLE_ADMIN')"
+                >
+                    <a class="nav-link" th:href="@{/user/all}">All Uses</a>
+                </li>
+                <li class="nav-item" id="upload-file">
+                    <a class="nav-link" th:href="@{/file}">Upload File</a>
+                </li>
+                <li class="nav-item" id="show-files">
+                    <a class="nav-link" th:href="@{/file/all}">Show Files</a>
+                </li>
+            </ul>
+            <div class="navbar-text">
+                <form
+                        action="/user/logout"
+                        class="form-inline"
+                        method="POST"
+                        sec:authorize="isAuthenticated()"
+                >
+                    <input
+                            th:name="${_csrf.parameterName}"
+                            th:value="${_csrf.token}"
+                            type="hidden"
+                    />
+                    <button
+                            class="btn btn-outline-primary my-2 my-sm-0"
+                            type="submit"
+                    >
+                        Logout
+                    </button>
+                </form>
+
+                <a
+                        class="btn btn-outline-primary"
+                        href="/user/register"
+                        role="button"
+                        sec:authorize="isAnonymous()"
+                        th:href="@{/user/register}"
+                >Register</a
+                >
+
+                <a
+                        class="btn btn-outline-primary"
+                        href="/user/login"
+                        role="button"
+                        sec:authorize="isAnonymous()"
+                        th:href="@{/user/login}"
+                >Login</a
+                >
+                <div layout:fragment="login">
+                    <!-- Your Page Content Here -->
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div layout:fragment="content">
+            <!-- Your Page Content Here -->
+        </div>
+
+        <div layout:fragment="hello">
+            <!-- Your Page Content Here -->
+        </div>
+    </div>
+
+    <!--    <footer class="fixed-bottom">-->
+    <!--        <div class="card mt-4">-->
+    <!--            <div class="card-header">-->
+    <!--                <h4 class="col-10 mx-auto text-center">Footer</h4>-->
+    <!--            </div>-->
+    <!--            <div class="card-body">-->
+    <!--                <blockquote class="blockquote mb-0">-->
+    <!--                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>-->
+    <!--                    <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite>-->
+    <!--                    </footer>-->
+    <!--                </blockquote>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </footer>-->
+</div>
+
+<script
+        src="../static/assets/jQuery/jquery-3.5.1.min.js"
+        th:src="@{'/assets/jQuery/jquery-3.5.1.min.js'}"
+></script>
+
+<script
+        src="../static/assets/bootstrap/bootstrap.min.js"
+        th:src="@{'/assets/bootstrap/bootstrap.min.js'}"
+></script>
+
+<script type="text/javascript">
+			$(document).ready(function () {
+				$('.toast').toast('show');
+
+				const href = $(location).attr('href');
+
+				const url = href.includes('?') ? href.split('?')[0] : href;
+
+				console.log('href: ' + href);
+				console.log('url: ' + url);
+
+				if (
+					url.endsWith('8080') ||
+					url.endsWith('8080/') ||
+					url.endsWith('home')
+				)
+					$('#home').addClass('active');
+				else if (url.endsWith('/student/add'))
+					$('#add-student').addClass('active');
+				else if (url.endsWith('/student/all'))
+					$('#all-students').addClass('active');
+				else if (url.endsWith('/user/all')) $('#all-users').addClass('active');
+				else if (url.endsWith('/file')) $('#upload-file').addClass('active');
+				else if (url.endsWith('/file/all')) $('#show-files').addClass('active');
+			});
+
+
+
+</script>
+</body>
+</html>

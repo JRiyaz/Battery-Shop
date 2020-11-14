@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html
+        layout:decorate="~{layout/dashboard-layout}"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <title>Add Referral</title>
+
+    <link
+            href="../static/assets/bootstrap/css/floating-labels.css"
+            rel="stylesheet"
+            th:href="@{/assets/bootstrap/css/floating-labels.css}"
+    />
+
+    <link
+            href="../static/css/file-upload.css"
+            rel="stylesheet"
+            th:href="@{/css/file-upload.css}"
+    />
+
+    <style>
+			section .material-card {
+				background-color: #42c169 !important;
+			}
+
+			section .dashes {
+				border: 4px dashed #42c169 !important;
+			}
+
+			section .editable {
+				color: #42c169 !important;
+			}
+
+			section .form-control:focus {
+				border-color: #42c169 !important;
+				box-shadow: 0 0 0 0.2rem rgb(111 66 193) !important;
+			}
+			section .form-control {
+				border: none;
+				border-bottom: 2px solid #ced4da;
+				border-radius: 0 !important;
+				outline: none !important;
+				box-shadow: none !important;
+			}
+			section .form-control:focus,
+			section .form-control:active {
+				transition: 0.5s ease-in-out !important;
+				left: 0 !important;
+				border-color: #42c169 !important;
+				outline: none !important;
+				outline-offset: 0px !important;
+				box-shadow: none !important;
+			}
+
+
+
+    </style>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <!-- <h1 class="h3 mb-0 text-gray-800">Dashboard</h1> -->
+            <nav aria-label="breadcrumb m-0">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item">
+                        <a href="#" th:href="@{/}"
+                        ><i aria-hidden="true" class="fa fa-home"></i
+                        ></a>
+                    </li>
+                    <li aria-current="page" class="breadcrumb-item active">
+                        Add Referral
+                    </li>
+                </ol>
+            </nav>
+            <a
+                    class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                    href="#"
+            >
+                <i aria-hidden="true" class="fas fa-download fa-sm text-white-50">
+                </i
+                >&nbsp; Generate Report
+            </a>
+        </div>
+
+        <!-- Content Row -->
+
+        <section
+                class="inner cover my-5 col-sm-12 col-lg-10 mx-auto"
+                role="main"
+        >
+            <form class="form-signin">
+                <div class="card card-shadow">
+                    <div class="card-header material-card text-center mb-4">
+                        <h4 class="py-1 rounded">REFFERAL</h4>
+                    </div>
+                    <div class="card-body">
+                        <div
+                                class="row justify-content-between align-items-center mx-sm-2 mb-3"
+                        >
+                            <div class="col-sm-9 col-lg-5 mx-auto mb-sm-3">
+                                <div class="file-modal shadow rounded py-5">
+                                    <div class="shadow" id="profile">
+                                        <div class="dashes"></div>
+                                        <label>Click to browse or drag an image here</label>
+                                    </div>
+                                    <div class="editable text-center">
+                                        <h5 class="mt-5 opacity-5" contenteditable>
+                                            Refferal's Image
+                                        </h5>
+                                    </div>
+                                </div>
+                                <input id="mediaFile" type="file"/>
+                            </div>
+
+                            <div class="col-sm-12 col-lg-6">
+                                <div class="form-label-group">
+                                    <input
+                                            autofocus
+                                            class="form-control"
+                                            id="first-name"
+                                            placeholder="First Name"
+                                            required
+                                            type="text"
+                                    />
+                                    <label for="first-name">First Name</label>
+                                </div>
+
+                                <div class="form-label-group">
+                                    <input
+                                            class="form-control"
+                                            id="last-name"
+                                            placeholder="Last Name"
+                                            required
+                                            type="text"
+                                    />
+                                    <label for="last-name">Last Name</label>
+                                </div>
+                                <div class="form-label-group">
+                                    <input
+                                            class="form-control"
+                                            id="primary-no"
+                                            placeholder="primary Number"
+                                            required
+                                            type="text"
+                                    />
+                                    <label for="primary-no">primary Number</label>
+                                </div>
+                                <div class="form-label-group">
+                                    <input
+                                            class="form-control"
+                                            id="secondary-no"
+                                            placeholder="Secondary Number"
+                                            required
+                                            type="text"
+                                    />
+                                    <label for="secondary-no">Secondary Number</label>
+                                </div>
+                                <div class="form-label-group">
+                                    <input
+                                            class="form-control"
+                                            id="email-id"
+                                            placeholder="Email ID"
+                                            required
+                                            type="email"
+                                    />
+                                    <label for="email-id">Email ID</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-between mx-sm-2 mb-3">
+                            <div class="col-12">
+                                <div class="form-label-group">
+                                    <input
+                                            autofocus
+                                            class="form-control"
+                                            id="address"
+                                            placeholder="Address"
+                                            required
+                                            type="text"
+                                    />
+                                    <label for="address">Address</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-around mx-sm-2 mb-3">
+                            <div class="col-sm-12 col-lg-6">
+                                <div class="form-label-group">
+                                    <input
+                                            autofocus
+                                            class="form-control"
+                                            id="city"
+                                            placeholder="City"
+                                            required
+                                            type="text"
+                                    />
+                                    <label for="city">City</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-lg-6">
+                                <div class="form-label-group">
+                                    <input
+                                            autofocus
+                                            class="form-control"
+                                            id="pincode"
+                                            placeholder="Postal Code"
+                                            required
+                                            type="text"
+                                    />
+                                    <label for="pincode">Postal Code</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-between mx-sm-2 mb-3">
+                            <div class="col-12">
+                                <div class="form-label-group">
+											<textarea
+                                                    class="form-control"
+                                                    id="observation"
+                                                    rows="3"
+                                            ></textarea>
+                                    <label class="observation" for="observation"
+                                    >A few words about Refferal...</label
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                            class="card-footer justify-content-center p-0 border-0 text-center bg-white mb-3"
+                    >
+                        <button
+                                class="btn text-purple btn-link m-0 font-weight-bold my-2 text-capitalize"
+                                type="submit"
+                        >
+                            Create Dealer ID
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </section>
+        <!-- End Content Row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+
+<th:block th:fragment="script">
+    <!-- Bootstrap Select Script -->
+    <script
+            src="../static/js/file-upload.js"
+            th:src="@{'/js/file-upload.js'}"
+    ></script>
+</th:block>
+</body>
+</html>

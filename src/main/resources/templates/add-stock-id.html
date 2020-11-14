@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html
+        layout:decorate="~{layout/dashboard-layout}"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <title>Add Stock ID</title>
+
+    <link
+            href="../static/assets/bootstrap/css/floating-labels.css"
+            rel="stylesheet"
+            th:href="@{/assets/bootstrap/css/floating-labels.css}"
+    />
+
+    <link
+            href="../assets/bootstrap-select/css/bootstrap-select.min.css"
+            rel="stylesheet"
+            th:href="@{/assets/bootstrap-select/css/bootstrap-select.min.css}"
+    />
+
+    <style>
+			section .bootstrap-select > .dropdown-toggle,
+			section .bootstrap-select > .dropdown-toggle.bs-placeholder,
+			section .form-control {
+				border: none;
+				border-bottom: 2px solid #ced4da;
+				border-radius: 0;
+				outline: none !important;
+				box-shadow: none !important;
+			}
+			section .bootstrap-select > .dropdown-toggle:focus,
+			section .bootstrap-select > .dropdown-toggle:active,
+			section .bootstrap-select > .dropdown-toggle.bs-placeholder:focus,
+			section .bootstrap-select > .dropdown-toggle.bs-placeholder:active,
+			section .form-control:focus,
+			section .form-control:active {
+				transition: 0.5s ease-in-out;
+				left: 0;
+				border-color: #dc2365 !important;
+				outline: none !important;
+				outline-offset: 0px !important;
+				box-shadow: none !important;
+			}
+			.form-control:disabled,
+			.form-control[readonly] {
+				background-color: #ffffff !important;
+				opacity: 1 !important;
+				cursor: no-drop !important;
+			}
+
+
+
+    </style>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <!-- <h1 class="h3 mb-0 text-gray-800">Dashboard</h1> -->
+            <nav aria-label="breadcrumb m-0">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item">
+                        <a href="#" th:href="@{/}"
+                        ><i aria-hidden="true" class="fa fa-home"></i
+                        ></a>
+                    </li>
+                    <li aria-current="page" class="breadcrumb-item active">
+                        Add Stock ID
+                    </li>
+                </ol>
+            </nav>
+            <a
+                    class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                    href="#"
+            >
+                <i aria-hidden="true" class="fas fa-download fa-sm text-white-50">
+                </i
+                >&nbsp; Generate Report
+            </a>
+        </div>
+
+        <!-- Content Row -->
+        <section
+                class="inner cover my-5 col-sm-12 col-lg-10 mx-auto"
+                role="main"
+        >
+            <form class="form-signin">
+                <div class="card card-shadow">
+                    <div class="card-header material-card bg-rosy text-center mb-4">
+                        <h4 class="py-1 rounded">STOCK ID</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row justify-content-center mx-sm-2 mb-3">
+                            <div class="col-12">
+                                <div class="form-group clearfix">
+                                    <label class="form-control-label m-0 p-0" for="add-seller"
+                                    >Select Dealer</label
+                                    >
+                                    <span class="add-link d-inline-block float-right"
+                                    ><a
+                                            class="decoration-none btn btn-rose btn-link"
+                                            href="add-dealer.html"
+                                    >Create Dealer ID</a
+                                    ></span
+                                    >
+                                    <select
+                                            autofocus
+                                            class="selectpicker form-control form-control-alternative"
+                                            data-hide-disabled="true"
+                                            data-live-search="true"
+                                            id="add-seller"
+                                            required
+                                            title="Select Dealer"
+                                    >
+                                        <option>Riyaz</option>
+                                        <option>Fayaz</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-between mx-sm-2 mb-3">
+                            <div class="col-sm-12 col-lg-6">
+                                <div class="form-label-group">
+                                    <input
+                                            autofocus
+                                            class="form-control"
+                                            id="store-name"
+                                            placeholder="Store Name"
+                                            required
+                                            type="text"
+                                    />
+                                    <label for="store-name">Store Name</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-lg-6">
+                                <div class="form-label-group">
+                                    <input
+                                            class="form-control"
+                                            id="branch-name"
+                                            placeholder="Branch Name"
+                                            required
+                                            type="text"
+                                    />
+                                    <label for="branch-name">Branch Name</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-between mx-sm-2 mb-3">
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="form-label-group">
+                                    <input
+                                            autofocus
+                                            class="form-control"
+                                            id="bill-amount"
+                                            placeholder="Bill Amount"
+                                            required
+                                            type="text"
+                                    />
+                                    <label for="bill-amount">Bill Amount</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="form-label-group">
+                                    <input
+                                            class="form-control"
+                                            id="tax-gst"
+                                            placeholder="Tax (or) GST"
+                                            required
+                                            type="text"
+                                    />
+                                    <label for="tax-gst">Tax (or) GST</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="form-label-group">
+                                    <input
+                                            class="form-control"
+                                            id="expenses"
+                                            placeholder="Expenses"
+                                            required
+                                            type="text"
+                                    />
+                                    <label for="expenses">Expenses</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="form-label-group">
+                                    <input
+                                            class="form-control"
+                                            disabled
+                                            id="total"
+                                            placeholder="Total"
+                                            readonly
+                                            type="text"
+                                    />
+                                    <label for="total">Total</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-between mx-sm-2 mb-3">
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="form-label-group">
+                                    <input
+                                            autofocus
+                                            class="form-control"
+                                            id="amount-paid"
+                                            placeholder="Amount Paid"
+                                            required
+                                            type="text"
+                                    />
+                                    <label for="amount-paid">Amount Paid</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="form-label-group">
+                                    <input
+                                            class="form-control"
+                                            disabled
+                                            id="due-amount"
+                                            placeholder="Due Amount"
+                                            readonly
+                                            type="text"
+                                    />
+                                    <label for="due-amount">Due Amount</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="form-label-group">
+                                    <input
+                                            class="form-control"
+                                            disabled
+                                            id="due-date"
+                                            placeholder="Due Date"
+                                            type="date"
+                                    />
+                                    <label for="due-date">Due Date</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-between mx-sm-2 mb-3">
+                            <div class="col-12">
+                                <div class="form-label-group">
+											<textarea
+                                                    class="form-control"
+                                                    id="observation"
+                                                    rows="3"
+                                            ></textarea>
+                                    <label class="observation" for="observation"
+                                    >A few words about the Stock...</label
+                                    >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-between mx-sm-2 mb-3">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <input
+                                                class="custom-file-input form-control form-control-alternative"
+                                                id="bill-image"
+                                                type="file"
+                                        />
+                                        <label class="custom-file-label m-0" for="bill-image"
+                                        >Bill Image</label
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                            class="card-footer justify-content-center p-0 border-0 text-center bg-white mb-3"
+                    >
+                        <button
+                                class="btn text-rose btn-link m-0 font-weight-bold my-2 text-capitalize"
+                                type="submit"
+                        >
+                            Create Stock ID
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </section>
+        <!-- End Content Row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+
+<th:block th:fragment="script">
+    <!-- Bootstrap Select Script -->
+    <script
+            src="../static/assets/bootstrap-select/js/bootstrap-select.min.js"
+            th:src="@{'/assets/bootstrap-select/js/bootstrap-select.min.js'}"
+    ></script>
+
+    <!-- Custom Script -->
+    <script src="../static/js/script.js" th:src="@{'/js/script.js'}"></script>
+
+    <script type="text/javascript">
+				$(document).ready(function () {
+					$('.selectpicker').selectpicker();
+				});
+
+
+
+    </script>
+</th:block>
+</body>
+</html>

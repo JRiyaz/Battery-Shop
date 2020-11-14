@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta
+            content="width=device-width, initial-scale=1, maximum-scale=1, userEntity-scalable=no"
+            name="viewport"
+    />
+
+    <title>Register | Battery Shop</title>
+
+    <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet"
+    />
+
+    <!-- Bootstrap Styles -->
+    <link
+            href="../../static/assets/bootstrap/css/bootstrap.min.css"
+            rel="stylesheet"
+            th:href="@{/assets/bootstrap/css/bootstrap.min.css}"
+    />
+
+    <!-- FontAwesome Styles -->
+    <link
+            href="../../static/assets/fontawesome-free/css/all.min.css"
+            rel="stylesheet"
+            th:href="@{/assets/fontawesome-free/css/all.min.css}"
+    />
+
+    <!-- Bootstrap Cover Styles -->
+    <link
+            href="../../static/assets/bootstrap/css/cover.css"
+            rel="stylesheet"
+            th:href="@{/assets/bootstrap/css/cover.css}"
+    />
+
+    <!-- Material Styles -->
+    <link
+            href="../../static/assets/material-design/material-dashboard.min.css"
+            rel="stylesheet"
+            th:href="@{/assets/material-design/material-dashboard.min.css}"
+    />
+
+    <!-- File Upload Styles -->
+    <link
+            href="../../static/css/file-upload.css"
+            rel="stylesheet"
+            th:href="@{/css/file-upload.css}"
+    />
+
+    <!-- Main Styles -->
+    <link
+            href="../../static/css/main.css"
+            rel="stylesheet"
+            th:href="@{/css/main.css}"
+    />
+
+    <style>
+			.bg-image {
+				/* th:style="'background:url('+ @{/image/login-background.jpg} +');'" */
+				/* background-image: url{[[@{/img/register.jpg}]]}; */
+				background-image: url('img/register.jpg');
+				background-size: cover;
+				background-position: center center;
+				background-attachment: fixed;
+				height: 100vh;
+				overflow-x: hidden;
+				overflow-y: scroll;
+			}
+			.card-header-rose {
+				background: linear-gradient(60deg, #f44336, #6e36f4) !important;
+			}
+			.dashes {
+				border: 4px dashed #3543fa !important;
+			}
+
+			.card-footer > .btn-link,
+			.card-footer > .btn-link:hover,
+			.editable > h5,
+			.fa,
+			.fas {
+				color: #8a35fa !important;
+			}
+			.form-control:invalid,
+			.form-control:active,
+			.form-control:focus,
+			.form-control:read-only {
+				background-image: linear-gradient(
+						0deg,
+						#8a35fa 2px,
+						rgba(244, 67, 54, 0) 0
+					),
+					linear-gradient(0deg, #d2d2d2 1px, hsla(0, 0%, 82%, 0) 0);
+			}
+
+
+
+    </style>
+</head>
+<body>
+<div class="full-width bg-image" th:style="'background-image:url('+ @{/img/register.jpg} +');'">
+    <div class="bg-blur full-width text-center text-white">
+        <div class="container d-flex p-3 mx-auto flex-column">
+            <header class="masthead mb-auto">
+                <div class="inner">
+                    <h3 class="masthead-brand m-0">Battery Shop</h3>
+                    <nav class="nav nav-masthead justify-content-center">
+                        <a class="nav-link" href="#" th:href="@{/}">Home</a>
+                        <a class="nav-link active" href="#" th:href="@{/user/register}"
+                        >Register
+                        </a>
+                        <a class="nav-link" href="#" th:href="@{/user/login}">Login</a>
+                    </nav>
+                </div>
+            </header>
+
+            <section class="inner cover my-5 col-10 mx-auto" role="main">
+                <form class="form-signin">
+                    <div class="card card-login card-hidden">
+                        <div class="card-header card-header-rose text-center">
+                            <h4 class="card-title font-weight-bold py-2">Register</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-sm-9 col-lg-5 mx-auto mb-sm-3">
+                                    <div class="file-modal shadow py-5 rounded">
+                                        <div class="shadow" id="profile">
+                                            <div class="dashes"></div>
+                                            <label>Click to browse or drag an image here</label>
+                                        </div>
+                                        <div class="editable text-center">
+                                            <i aria-hidden="true" class="fa fa-pencil fa-2x"></i>
+                                            <h5 class="mt-5 opacity-5" contenteditable>
+                                                Users's Image
+                                            </h5>
+                                        </div>
+                                    </div>
+                                    <input id="mediaFile" type="file"/>
+                                </div>
+                                <div class="col-sm-12 col-lg-6">
+                                    <div class="bmd-form-group">
+                                        <div class="input-group my-4">
+                                            <div class="input-group-prepend">
+														<span class="input-group-text">
+															<i aria-hidden="true" class="fa fa-user"></i>
+														</span>
+                                            </div>
+                                            <input
+                                                    autofocus
+                                                    class="form-control"
+                                                    placeholder="Name"
+                                                    required
+                                                    type="text"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="bmd-form-group">
+                                        <div class="input-group password-group my-4">
+                                            <div class="input-group-prepend">
+														<span class="input-group-text">
+															<i aria-hidden="true" class="fa fa-envelope"></i>
+														</span>
+                                            </div>
+                                            <input
+                                                    autofocus
+                                                    class="form-control"
+                                                    placeholder="Email ID"
+                                                    required
+                                                    type="email"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="bmd-form-group">
+                                        <div class="input-group my-4">
+                                            <div class="input-group-prepend">
+														<span class="input-group-text">
+															<i
+                                                                    aria-hidden="true"
+                                                                    class="fas fa-phone fa-rotate-180"
+                                                            ></i>
+														</span>
+                                            </div>
+                                            <input
+                                                    autofocus
+                                                    class="form-control"
+                                                    placeholder="Mobile No"
+                                                    required
+                                                    type="text"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="bmd-form-group">
+                                        <div class="input-group my-4">
+                                            <div class="input-group-prepend">
+														<span class="input-group-text">
+															<i
+                                                                    aria-hidden="true"
+                                                                    class="fa fa-male fa-2x"
+                                                            ></i>
+														</span>
+                                            </div>
+                                            <select class="form-control">
+                                                <option selected>Male</option>
+                                                <option>Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="bmd-form-group">
+                                        <div class="input-group password-group my-4">
+                                            <div class="input-group-prepend">
+														<span class="input-group-text">
+															<i aria-hidden="true" class="fa fa-lock"></i>
+														</span>
+                                            </div>
+                                            <input
+                                                    autofocus
+                                                    class="form-control password-field"
+                                                    id="password-field"
+                                                    placeholder="Password..."
+                                                    required
+                                                    type="password"
+                                            />
+                                            <span class="password-visibility d-none">show</span>
+                                        </div>
+                                    </div>
+                                    <div class="bmd-form-group">
+                                        <div class="input-group password-group my-4">
+                                            <div class="input-group-prepend">
+														<span class="input-group-text">
+															<i aria-hidden="true" class="fa fa-lock"></i>
+														</span>
+                                            </div>
+                                            <input
+                                                    autofocus
+                                                    class="form-control password-field"
+                                                    id="password-field-confirm"
+                                                    placeholder="Confirm Password..."
+                                                    required
+                                                    type="text"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="bmd-form-group col-12">
+                                    <div class="input-group my-4">
+                                        <div class="input-group-prepend">
+													<span class="input-group-text">
+														<i
+                                                                aria-hidden="true"
+                                                                class="fas fa-map-marker fa-lg"
+                                                        ></i>
+													</span>
+                                        </div>
+                                        <input
+                                                autofocus
+                                                class="form-control"
+                                                placeholder="Address"
+                                                required
+                                                type="text"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="bmd-form-group col-sm-12 col-lg-6">
+                                    <div class="input-group my-4">
+                                        <div class="input-group-prepend">
+													<span class="input-group-text">
+														<i
+                                                                aria-hidden="true"
+                                                                class="fas fa-globe fa-lg"
+                                                        ></i>
+													</span>
+                                        </div>
+                                        <input
+                                                autofocus
+                                                class="form-control"
+                                                placeholder="City"
+                                                required
+                                                type="text"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="bmd-form-group col-sm-12 col-lg-6">
+                                    <div class="input-group my-4">
+                                        <div class="input-group-prepend">
+													<span class="input-group-text">
+														<i
+                                                                aria-hidden="true"
+                                                                class="fas fa-map-pin fa-lg"
+                                                        ></i>
+													</span>
+                                        </div>
+                                        <input
+                                                autofocus
+                                                class="form-control"
+                                                placeholder="Pincode"
+                                                required
+                                                type="text"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer justify-content-center p-0">
+                            <button
+                                    class="btn btn-rose btn-link btn-lg m-0"
+                                    type="submit"
+                            >
+                                Let's Go
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <footer class="mt-4 py-3">
+                <div class="inner float-left">
+                    <p>Registration Page</p>
+                </div>
+                <div class="copyright float-right">
+                    <a
+                            class="text-white"
+                            href="#"
+                            target="_blank"
+                            th:href="@{/user/riyaz-j}"
+                    >Riyaz J
+                    </a>
+                    &nbsp; - &nbsp; ©
+                    <script>
+								document.write(new Date().getFullYear());
+
+
+
+                    </script>
+                    - All Rights Reserved.
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery Script -->
+<script
+        src="../../static/assets/jQuery/jquery.min.js"
+        th:src="@{'/assets/jQuery/jquery.min.js'}"
+></script>
+
+<script type="text/javascript">
+			$(document).ready(function () {
+				const password_field = $('#password-field');
+				const password_visibility = $('.password-visibility');
+				password_field.keyup(function () {
+					if ($('#password-field').val().length >= 0) {
+						if (password_visibility.hasClass('d-none'))
+							password_visibility.removeClass('d-none');
+					} else {
+						if (!password_visibility.hasClass('d-none'))
+							password_visibility.addClass('d-none');
+					}
+				});
+
+				password_visibility.on('click', function () {
+					if (password_field.attr('type') === 'password') {
+						password_field.attr('type', 'text');
+						password_visibility.text('hide');
+					} else {
+						password_field.attr('type', 'password');
+						password_visibility.text('show');
+					}
+				});
+			});
+
+
+
+</script>
+</body>
+</html>

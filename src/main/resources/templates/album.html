@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html
+        layout:decorate="~{layout/dashboard-layout}"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <title>Album</title>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <!-- <h1 class="h3 mb-0 text-gray-800">Dashboard</h1> -->
+            <nav aria-label="breadcrumb m-0">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item">
+                        <a href="#" th:href="@{/}"
+                        ><i aria-hidden="true" class="fa fa-home"></i
+                        ></a>
+                    </li>
+                    <li aria-current="page" class="breadcrumb-item active">
+                        Dashboard
+                    </li>
+                </ol>
+            </nav>
+            <a
+                    class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                    href="#"
+            >
+                <i aria-hidden="true" class="fas fa-download fa-sm text-white-50">
+                </i
+                >&nbsp; Generate Report
+            </a>
+        </div>
+
+        <!-- Content Row -->
+        <section role="main">
+            <article class="jumbotron text-center">
+                <div class="container">
+                    <h1>Album example</h1>
+                    <p class="lead text-muted">
+                        Something short and leading about the collection below
+                    </p>
+                    <p class="text-center mx-auto">
+                        <a class="btn btn-primary my-2" href="#">Upload Images </a>
+                    </p>
+                </div>
+            </article>
+
+            <div class="album py-5 bg-light">
+                <div class="container">
+                    <div class="row">
+                        <!-- First Card -->
+                        <div class="card" style="width: 18rem;">
+                            <img alt="..." class="card-img-top" height="225" src="..."/>
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">
+                                    Some quick example text to build on the card title and
+                                    make up the bulk of the card's content.
+                                </p>
+                                <a class="btn btn-primary" href="#">Go somewhere</a>
+                            </div>
+                        </div>
+                        <!-- First Card End -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Of Content Row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+</body>
+</html>

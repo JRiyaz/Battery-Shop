@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html
+        layout:decorate="~{layout/dashboard-layout}"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <title>Add Product</title>
+
+    <link
+            href="../static/assets/bootstrap-select/css/bootstrap-select.min.css"
+            rel="stylesheet"
+            th:href="@{/assets/bootstrap-select/css/bootstrap-select.min.css}"
+    />
+
+    <link
+            href="../static/css/file-upload.css"
+            rel="stylesheet"
+            th:href="@{/css/file-upload.css}"
+    />
+
+    <style>
+			section .material-card {
+				background: linear-gradient(60deg, #ffc107, #1a9065) !important;
+			}
+
+
+
+    </style>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <!-- <h1 class="h3 mb-0 text-gray-800">Dashboard</h1> -->
+            <nav aria-label="breadcrumb m-0">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item">
+                        <a href="#" th:href="@{/}"
+                        ><i aria-hidden="true" class="fa fa-home"></i
+                        ></a>
+                    </li>
+                    <li aria-current="page" class="breadcrumb-item active">
+                        Add Dealer
+                    </li>
+                </ol>
+            </nav>
+            <a
+                    class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                    href="#"
+            >
+                <i aria-hidden="true" class="fas fa-download fa-sm text-white-50">
+                </i
+                >&nbsp; Generate Report
+            </a>
+        </div>
+
+        <!-- Content Row -->
+
+        <section
+                class="inner cover my-5 col-sm-12 col-lg-10 mx-auto"
+                role="main"
+        >
+            <form class="form-signin">
+                <div class="card card-shadow">
+                    <div class="card-header material-card text-center mb-4">
+                        <h4 class="py-1 rounded">ADD PRODUCTS</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row justify-content-center mx-sm-2 mb-3">
+                            <div class="form-group col-12 clearfix">
+                                <label for="add-seller">Select Stock ID</label>
+                                <span class="add-link d-inline-block float-right"
+                                ><a
+                                        class="decoration-none btn btn-rose btn-link"
+                                        href="add-stock-id.html"
+                                >Create Stock ID</a
+                                ></span
+                                >
+                                <select
+                                        autofocus
+                                        class="selectpicker form-control"
+                                        data-hide-disabled="true"
+                                        data-live-search="true"
+                                        id="add-seller"
+                                        required
+                                        title="Select Stock ID"
+                                >
+                                    <option>1</option>
+                                    <option>3</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div
+                                class="row justify-content-between mx-sm-2 mb-3"
+                                id="product-category"
+                        >
+                            <div class="form-group col-sm-6 col-lg-3">
+                                <label for="category">Select Category</label>
+                                <select
+                                        autofocus
+                                        class="selectpicker form-control"
+                                        data-hide-disabled="true"
+                                        data-live-search="true"
+                                        id="category"
+                                        required
+                                        title="Select Category"
+                                >
+                                    <option>Automobile</option>
+                                    <option>Home & Business</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-6 col-lg-3">
+                                <label for="vehicle-type">Vehicle Type</label>
+                                <select
+                                        autofocus
+                                        class="selectpicker form-control"
+                                        data-hide-disabled="true"
+                                        data-live-search="true"
+                                        id="vehicle-type"
+                                        required
+                                        title="Vehicle Type"
+                                >
+                                    <option>2 Wheeler</option>
+                                    <option>3 Wheeler</option>
+                                    <option>4 Wheeler</option>
+                                    <option>Bus</option>
+                                    <option>Lorry</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-6 col-lg-3">
+                                <label for="Manufacturer">Select Manufacturer</label>
+                                <select
+                                        autofocus
+                                        class="selectpicker form-control"
+                                        data-hide-disabled="true"
+                                        data-live-search="true"
+                                        id="Manufacturer"
+                                        required
+                                        title="Select Manufacturer"
+                                >
+                                    <option>Baja</option>
+                                    <option>Yamaha</option>
+                                    <option>TVS</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-6 col-lg-3">
+                                <label for="vehicle-model">Vehicle Model</label>
+                                <select
+                                        autofocus
+                                        class="selectpicker form-control"
+                                        data-hide-disabled="true"
+                                        data-live-search="true"
+                                        id="vehicle-model"
+                                        required
+                                        title="Vehicle Model"
+                                >
+                                    <option>R15</option>
+                                    <option>R3</option>
+                                    <option>MT15</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div
+                                class="row justify-content-between mx-sm-2 mb-3"
+                                id="product-details"
+                        >
+                            <div class="form-group col-sm-6 col-lg-3">
+                                <label for="product-type">Product Type</label>
+                                <select
+                                        autofocus
+                                        class="selectpicker form-control"
+                                        data-hide-disabled="true"
+                                        data-live-search="true"
+                                        id="product-type"
+                                        required
+                                        title="Product Type"
+                                >
+                                    <option>Battery</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-6 col-lg-3">
+                                <label for="brand-name">Brand Name</label>
+                                <input
+                                        class="form-control"
+                                        id="brand-name"
+                                        list="brandName"
+                                        placeholder="Brand Name"
+                                        type="text"
+                                />
+                                <datalist id="brandName">
+                                    <option value="Exide"></option>
+                                    <option value="Amaron"></option>
+                                    <option value="SunX"></option>
+                                </datalist>
+                            </div>
+                            <div class="form-group col-sm-6 col-lg-3">
+                                <label for="product-name">Product Name</label>
+                                <input
+                                        class="form-control"
+                                        id="product-name"
+                                        list="productName"
+                                        placeholder="Product Name"
+                                        type="text"
+                                />
+                                <datalist id="productName">
+                                    <option value="Pro Bike Rider"></option>
+                                    <option value="Kisan Special"></option>
+                                </datalist>
+                            </div>
+                            <div class="form-group col-sm-6 col-lg-3">
+                                <label for="product-model">Product Model</label>
+                                <input
+                                        class="form-control"
+                                        id="product-model"
+                                        list="productModel"
+                                        placeholder="Product Model"
+                                        type="text"
+                                />
+                                <datalist id="productModel">
+                                    <option value="5LB"></option>
+                                    <option value="6LB"></option>
+                                    <option value="9LB"></option>
+                                </datalist>
+                            </div>
+                        </div>
+
+                        <div
+                                class="row justify-content-between mx-sm-2 mb-3"
+                                id="product-specifications"
+                        >
+                            <div class="form-group col-sm-6 col-lg-3">
+                                <label for="guarantee">Guarantee</label>
+                                <input
+                                        class="form-control"
+                                        id="guarantee"
+                                        placeholder="Guarantee"
+                                        type="text"
+                                />
+                            </div>
+                            <div class="form-group col-sm-6 col-lg-3">
+                                <label for="warranty">Warranty</label>
+                                <input
+                                        class="form-control"
+                                        id="warranty"
+                                        placeholder="Warranty"
+                                        type="text"
+                                />
+                            </div>
+                            <div class="form-group col-sm-6 col-lg-3">
+                                <label for="weight">Weight</label>
+                                <input
+                                        class="form-control"
+                                        id="weight"
+                                        placeholder="Weight"
+                                        type="text"
+                                />
+                            </div>
+                            <div class="form-group col-sm-6 col-lg-3">
+                                <label for="capacity">Capacity</label>
+                                <input
+                                        class="form-control"
+                                        id="capacity"
+                                        placeholder="Capacity"
+                                        type="text"
+                                />
+                            </div>
+                        </div>
+
+                        <div
+                                class="row justify-content-between mx-sm-2 mb-3"
+                                id="product-price-and-info"
+                        >
+                            <div class="form-group col-sm-6 col-lg-3">
+                                <label for="product-code">Product Code</label>
+                                <input
+                                        class="form-control"
+                                        id="product-code"
+                                        placeholder="Product Code"
+                                        type="text"
+                                />
+                            </div>
+                            <div class="form-group col-sm-6 col-lg-3">
+                                <label for="manufacturing-date">Manufacturing Date</label>
+                                <input
+                                        class="form-control"
+                                        id="manufacturing-date"
+                                        placeholder="Manufacturing Date"
+                                        type="date"
+                                />
+                            </div>
+                            <div class="form-group col-sm-6 col-lg-3">
+                                <label for="mrp">MRP</label>
+                                <input
+                                        class="form-control"
+                                        id="mrp"
+                                        placeholder="MRP"
+                                        type="text"
+                                />
+                            </div>
+                            <div class="form-group col-sm-6 col-lg-3">
+                                <label for="selling-price">Selling Price</label>
+                                <input
+                                        class="form-control"
+                                        id="selling-price"
+                                        placeholder="Selling Price"
+                                        type="text"
+                                />
+                            </div>
+                        </div>
+
+                        <div
+                                class="row justify-content-between mx-sm-2 mb-3"
+                                id="product-key-features"
+                        >
+                            <div class="form-group col-12">
+                                <label for="product-features">Product Features</label>
+                                <input
+                                        class="form-control"
+                                        id="product-features"
+                                        placeholder="Product Features"
+                                        type="text"
+                                />
+                            </div>
+                        </div>
+
+                        <div
+                                class="row justify-content-between mx-sm-2 mb-3"
+                                id="product--observation"
+                        >
+                            <div class="form-group col-12">
+                                <label for="observation">Observation</label>
+                                <textarea
+                                        aria-label="With textarea"
+                                        class="form-control"
+                                        id="observation"
+                                        placeholder="A few word about the product..."
+                                ></textarea>
+                            </div>
+                        </div>
+
+                        <div
+                                class="row justify-content-between mx-sm-2 mb-3"
+                                id="product-images"
+                        >
+                            <div class="form-group custom-file col-12">
+                                <label for="product-image">Product Image</label>
+                                <div class="custom-file">
+                                    <input
+                                            class="custom-file-input"
+                                            id="product-image"
+                                            type="file"
+                                    />
+                                    <label class="custom-file-label m-0" for="product-image"
+                                    >Choose file</label
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                            class="card-footer justify-content-center p-0 border-0 text-center bg-white mb-3"
+                    >
+                        <button
+                                class="btn text-rose btn-link m-0 font-weight-bold my-2 text-capitalize"
+                                type="submit"
+                        >
+                            Add Products
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <!-- End Content Row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+
+<th:block th:fragment="script">
+    <!-- Bootstrap Select Script -->
+    <script
+            src="../static/assets/bootstrap-select/js/bootstrap-select.min.js"
+            th:src="@{'/assets/bootstrap-select/js/bootstrap-select.min.js'}"
+    ></script>
+
+    <script type="text/javascript">
+				$(document).ready(function () {
+					$('.selectpicker').selectpicker();
+				});
+
+
+
+    </script>
+</th:block>
+</body>
+</html>
